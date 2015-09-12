@@ -23,12 +23,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
     Parse.initialize("g9Mqi6zsBoUTdGWHapYxOjpITKiP5ubfJSWRTAoZ", "vQR3lTkMgZyZDgQHv2xVO9tfGJXYgNI6oWqQVnMO");
 
-    var TestObject = Parse.Object.extend("TestObject");
-    var testObject = new TestObject();
-    testObject.save({foo: "bar"}).then(function(object) {
-      console.log("yay! it worked");
-    });
-
     window.parsePlugin.initialize('g9Mqi6zsBoUTdGWHapYxOjpITKiP5ubfJSWRTAoZ', 'qQWC7kvvkSiYtBAqgw0FR6rRftAfFUyZRbnPwlsk', function() {
       console.log('Parse initialized successfully.');
 
