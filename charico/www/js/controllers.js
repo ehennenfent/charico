@@ -27,38 +27,38 @@ angular.module('starter.controllers', [])
 
 .controller('AccountCtrl', function($scope) {
     var firstTime = (window.localStorage.getItem("firstTime") != 'false');
+    $scope.data = {};
 
-    console.log(firstTime);
     if(!firstTime){
-        $scope.percentage = window.localStorage.getItem("percentage");
-        $scope.apiKey = window.localStorage.getItem("apiKey");
-        $scope.fullName = window.localStorage.getItem("fullName");
+        $scope.data.percentage = window.localStorage.getItem("percentage");
+        $scope.data.apiKey = window.localStorage.getItem("apiKey");
+        $scope.data.fullName = window.localStorage.getItem("fullName");
     }
     else{
-        $scope.percentage = 15;
+        $scope.data.percentage = 15;
     }
 
     $scope.storeParseUser = function(){
         console.log("Button Clicked");
         if(firstTime){
-            var user = new Parse.user();
-            user.set('username', $scope.fullName.replace(' ',''));
-            user.set('password', $scpoe.apiKey);
-            user.set('percentage',$scope.percentage);
+            var user = new Parse.User();
+            user.set('username', $scope.data.fullName.replace(' ',''));
+            user.set('password', $scope.data.apiKey);
+            user.set('percentage',$scope.data.percentage);
 
             user.signUp().then(function(user){
-                window.localStorage.setItem("percentage",$scope.percentage);
-                window.localStorage.setItem("apiKey",$scope.apiKey);
-                window.localStorage.setItem("fullName",$scope.fullName);
+                window.localStorage.setItem("percentage",$scope.data.percentage);
+                window.localStorage.setItem("apiKey",$scope.data.apiKey);
+                window.localStorage.setItem("fullName",$scope.data.fullName);
                 window.localStorage.setItem("firstTime",'false');
-                console.log($scope.fullName + " Signed up Successfully");
+                console.log($scope.data.fullName + " Signed up Successfully");
             }, function(error){console.log(error);});
         }
         else{
             Parse.User.logIn(window.localStorage.getItem('fullName'),window.localStorage.getItem('apiKey')).then(function(user){
-                console.log($scope.fullName + " Logged in successfully.");
+                console.log($scope.data.fullName + " Logged in successfully.");
             }, function(error){
-                console.log($scope.fullName + " Login error! " + error);
+                console.log($scope.data.fullName + " Login error! " + error);
             });
         }
     };

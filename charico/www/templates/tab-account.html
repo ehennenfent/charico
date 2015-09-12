@@ -3,20 +3,20 @@
     <div class="card">
         <label class="item item-input">
           <span class="input-label">First Last</span>
-          <input type="text" ng-model="fullName">
+          <input type="text" ng-model="data.fullName"></input>
         </label>
         <label class="item item-input">
           <span class="input-label">API Key</span>
-          <input type="text" ng-model="apiKey">
+          <input type="text" ng-model="data.apiKey"></input>
         </label>
         <div class="list">
           <div class="item range range-positive">
             <i class="icon ion-minus"></i>
-            <input type="range" name="volume" min="0" max="100" value="15" ng-model="percentage">
+            <input type="range" name="volume" min="0" max="100" value="15" ng-model="data.percentage" />
             <i class="icon ion-plus"></i>
           </div>
         </div>
-        <div style="font-size: 45px; font-weight: light; color: #9d9; text-align: center; height: 1.4em;">{{percentage}}%</div>
+        <div style="font-size: 45px; font-weight: light; color: #9d9; text-align: center; height: 1.4em;">{{data.percentage}}%</div>
     </div>
     <button ng-click="storeParseUser()" class="button button-block" style="background-color: #ED7177; border-color: #ED7177">
 Update
