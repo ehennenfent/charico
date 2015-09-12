@@ -25,7 +25,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('TotalCtrl', function($scope, $http) {
-    $scope.total = Total($scope, $http);
+    $scope.total = Total($scope, $http, "Rousey");
 })
 
 .controller('AccountCtrl', function($scope) {
