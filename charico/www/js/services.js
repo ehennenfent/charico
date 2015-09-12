@@ -29,10 +29,25 @@ angular.module('starter.services', [])
     name: 'International Red Cross',
     description: 'Help respond to disasters worldwide.',
     face: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Flag_of_the_ICRC.svg/360px-Flag_of_the_ICRC.svg.png'
-  }];
+    }];
+  if(window.localStorage.getItem("charityOrder") !== null){
+        var sorting = JSON.parse(window.localStorage.getItem("charityOrder"));
+        console.log(sorting);
+        charities = charities.map(function(charity) {
+            var n = sorting.indexOf(charity.id);
+            sorting[n] = '';
+            return [n, charity];
+        }).sort().map(function(j) { return j[1];});
+    }
 
   return {
     all: function() {
+      return charities;
+    },
+    moveItem: function(item, fromIndex, toIndex) {
+      charities.splice(fromIndex, 1);
+      charities.splice(toIndex, 0, item);
+      window.localStorage.setItem("charityOrder", JSON.stringify(charities.map(function(charity){return charity.id;} )));
       return charities;
     },
     remove: function(charity) {

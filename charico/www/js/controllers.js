@@ -15,6 +15,9 @@ angular.module('starter.controllers', [])
   $scope.remove = function(charity) {
     Charities.remove(charity);
   };
+  $scope.moveItem = function(item, fromIndex, toIndex) {
+    $scope.charities = Charities.moveItem(item, fromIndex, toIndex);
+  };
 })
 
 .controller('CharityDetailCtrl', function($scope, $stateParams, Charities) {

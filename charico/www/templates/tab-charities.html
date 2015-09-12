@@ -1,15 +1,17 @@
 <ion-view view-title="Charities">
   <ion-content>
-    <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="charity in charities" type="item-text-wrap" href="#/tab/charities/{{charity.id}}">
+    <ion-list show-reorder="true">
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="charity in charities" type="item-text-wrap">
         <img ng-src="{{charity.face}}">
         <h2>{{charity.name}}</h2>
         <p>{{charity.description}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-
-        <ion-option-button class="button-assertive" ng-click="remove(charity)">
+        <!-- <i class="icon ion-chevron-right icon-accessory"></i> -->
+        <ion-reorder-button class="ion-navicon"
+            on-reorder="moveItem(charity, $fromIndex, $toIndex)">
+        </ion-reorder-button>
+        <!-- <ion-option-button class="button-assertive" ng-click="remove(charity)">
           Delete
-        </ion-option-button>
+        </ion-option-button> -->
       </ion-item>
     </ion-list>
   </ion-content>
