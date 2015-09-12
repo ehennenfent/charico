@@ -1,1 +1,6 @@
 /* Empty. Add your own CSS if you like */
+.vCenter{
+    position: relative;
+    top: 45%;
+    transform: translateY(-50%);
+}

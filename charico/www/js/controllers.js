@@ -1,23 +1,32 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller('DashCtrl', function($scope, $http, $rootScope) {
+    $scope.$on('$ionicView.enter', function(e) {
+        Deposits($scope, $http, "Rousey", $rootScope);
+    });
+})
 
 .controller('CharitiesCtrl', function($scope, Charities) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+
+  $scope.data = {};
 
   $scope.charities = Charities.all();
+
   $scope.remove = function(charity) {
     Charities.remove(charity);
   };
   $scope.moveItem = function(item, fromIndex, toIndex) {
     $scope.charities = Charities.moveItem(item, fromIndex, toIndex);
   };
+
+  $scope.data.reorderable = false;
+
+  $scope.makeDonation = function(charity, amount){
+      var user = Parse.User.current();
+      user.set('month_donations', user.get('month_donations') + amount);
+      user.save();
+  };
+
 })
 
 .controller('CharityDetailCtrl', function($scope, $stateParams, Charities) {
@@ -26,6 +35,7 @@ angular.module('starter.controllers', [])
 
 .controller('TotalCtrl', function($scope, $http, $rootScope) {
     Total($scope, $http, "Rousey", $rootScope);
+    Deposits($scope, $http, "Rousey", $rootScope);
 })
 
 .controller('AccountCtrl', function($scope) {
@@ -38,7 +48,7 @@ angular.module('starter.controllers', [])
         $scope.data.fullName = window.localStorage.getItem("fullName");
     }
     else{
-        $scope.data.percentage = 15;
+        $scope.data.percentage = '15';
     }
 
     $scope.storeParseUser = function(){
@@ -48,6 +58,8 @@ angular.module('starter.controllers', [])
             user.set('username', $scope.data.fullName.replace(' ',''));
             user.set('password', $scope.data.apiKey);
             user.set('percentage',$scope.data.percentage);
+            user.set('month_donations',0);
+            user.save();
 
             user.signUp().then(function(user){
                 window.localStorage.setItem("percentage",$scope.data.percentage);
@@ -58,7 +70,7 @@ angular.module('starter.controllers', [])
             }, function(error){console.log(error);});
         }
         else{
-            Parse.User.logIn(window.localStorage.getItem('fullName'),window.localStorage.getItem('apiKey')).then(function(user){
+            Parse.User.logIn(window.localStorage.getItem('fullName').replace(' ',''),window.localStorage.getItem('apiKey')).then(function(user){
                 console.log($scope.data.fullName + " Logged in successfully.");
             }, function(error){
                 console.log($scope.data.fullName + " Login error! " + error);

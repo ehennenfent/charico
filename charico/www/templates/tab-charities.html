@@ -1,17 +1,19 @@
 <ion-view view-title="Charities">
+    <ion-nav-buttons side="secondary">
+      <button class="button" ng-click="data.reorderable = !data.reorderable;">
+        <i class="icon ion-edit"></i>
+      </button>
+    </ion-nav-buttons>
   <ion-content>
-    <ion-list show-reorder="true">
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="charity in charities" type="item-text-wrap">
+    <ion-list show-reorder="data.reorderable">
+      <ion-item class="item-remove-animate item-avatar item-icon-right item-button-right" ng-repeat="charity in charities" href="#/tab/charities/{{charity.id}}" type="item-text-wrap">
         <img ng-src="{{charity.face}}">
         <h2>{{charity.name}}</h2>
-        <p>{{charity.description}}</p>
-        <!-- <i class="icon ion-chevron-right icon-accessory"></i> -->
+        <p style="width: 75%">{{charity.description}}</p>
+        <button class="button" ng-click="makeDonation(charity, 10)" ng-hide="data.reorderable" style="position: absolute; top: 30%">Donate</button>
         <ion-reorder-button class="ion-navicon"
             on-reorder="moveItem(charity, $fromIndex, $toIndex)">
         </ion-reorder-button>
-        <!-- <ion-option-button class="button-assertive" ng-click="remove(charity)">
-          Delete
-        </ion-option-button> -->
       </ion-item>
     </ion-list>
   </ion-content>
