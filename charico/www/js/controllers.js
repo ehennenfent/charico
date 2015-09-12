@@ -24,8 +24,8 @@ angular.module('starter.controllers', [])
   $scope.charity = Charities.get($stateParams.charityId);
 })
 
-.controller('TotalCtrl', function($scope, $http) {
-    $scope.total = Total($scope, $http, "Rousey");
+.controller('TotalCtrl', function($scope, $http, $rootScope) {
+    Total($scope, $http, "Rousey", $rootScope);
 })
 
 .controller('AccountCtrl', function($scope) {
