@@ -21,6 +21,10 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
+.controller('TotalCtrl', function($scope, $http) {
+    $scope.total = Total($scope, $http);
+})
+
 .controller('AccountCtrl', function($scope) {
   $scope.settings = {
     enableFriends: true
