@@ -1,47 +1,47 @@
 angular.module('starter.services', [])
 
-.factory('Chats', function() {
+.factory('Charities', function() {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
-  var chats = [{
+  var charities = [{
     id: 0,
-    name: 'Ben Sparrow',
-    lastText: 'You on your way?',
-    face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
+    name: 'Save the Children',
+    description: 'Help provide relief and education for children in developing countries',
+    face: 'https://pbs.twimg.com/profile_images/542228885476081665/MyOfVNsK.png'
   }, {
     id: 1,
-    name: 'Max Lynx',
-    lastText: 'Hey, it\'s me',
-    face: 'https://avatars3.githubusercontent.com/u/11214?v=3&s=460'
+    name: 'Salvation Army',
+    description: 'Assist with relief for disaster victims, refugees, and the homeless.',
+    face: 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c4/The_Salvation_Army.svg/868px-The_Salvation_Army.svg.png'
   }, {
     id: 2,
-    name: 'Adam Bradleyson',
-    lastText: 'I should buy a boat',
-    face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
+    name: 'American Cancer Society',
+    description: 'Support cancer research and treatment for current patients.',
+    face: 'http://www.chem.hawaii.edu/Bil301/ACSAstrochemistry/logo1.jpg'
   }, {
     id: 3,
-    name: 'Perry Governor',
-    lastText: 'Look at my mukluks!',
-    face: 'https://pbs.twimg.com/profile_images/598205061232103424/3j5HUXMY.png'
+    name: 'HH Cirque du Twerque',
+    description: 'Node.js is the only real dev language.',
+    face: 'http://ih1.redbubble.net/image.53589211.4056/fc,550x550,white.u1.jpg'
   }, {
     id: 4,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'https://pbs.twimg.com/profile_images/578237281384841216/R3ae1n61.png'
+    name: 'International Red Cross',
+    description: 'Help respond to disasters worldwide.',
+    face: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Flag_of_the_ICRC.svg/360px-Flag_of_the_ICRC.svg.png'
   }];
 
   return {
     all: function() {
-      return chats;
+      return charities;
     },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
+    remove: function(charity) {
+      charities.splice(charities.indexOf(charity), 1);
     },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
+    get: function(charityId) {
+      for (var i = 0; i < charities.length; i++) {
+        if (charities[i].id === parseInt(charityId)) {
+          return charities[i];
         }
       }
       return null;
