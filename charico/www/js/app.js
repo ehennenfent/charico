@@ -20,6 +20,49 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       // org.apache.cordova.statusbar required
       StatusBar.styleLightContent();
     }
+
+    Parse.initialize("g9Mqi6zsBoUTdGWHapYxOjpITKiP5ubfJSWRTAoZ", "vQR3lTkMgZyZDgQHv2xVO9tfGJXYgNI6oWqQVnMO");
+
+    var TestObject = Parse.Object.extend("TestObject");
+    var testObject = new TestObject();
+    testObject.save({foo: "bar"}).then(function(object) {
+      console.log("yay! it worked");
+    });
+
+    window.parsePlugin.initialize('g9Mqi6zsBoUTdGWHapYxOjpITKiP5ubfJSWRTAoZ', 'qQWC7kvvkSiYtBAqgw0FR6rRftAfFUyZRbnPwlsk', function() {
+      console.log('Parse initialized successfully.');
+
+
+      window.parsePlugin.subscribe('SampleChannel', function() {
+        console.log('Successfully subscribed to SampleChannel.');
+
+
+          window.parsePlugin.getInstallationId(function(id) {
+            // update the view to show that we have the install ID
+            console.log('Retrieved install id: ' + id);
+
+              /**
+               * Now you can construct an object and save it to your own services, or Parse, and corrilate users to parse installations
+               *
+               var install_data = {
+                  installation_id: id,
+                  channels: ['SampleChannel']
+               }
+               *
+               */
+
+          }, function(e) {
+            console.log('Failure to retrieve install id.');
+          });
+
+      }, function(e) {
+          console.log('Failed trying to subscribe to SampleChannel.');
+      });
+
+    }, function(e) {
+        console.log('Failure to initialize Parse.');
+    });
+
   });
 })
 
