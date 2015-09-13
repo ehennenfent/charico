@@ -5,25 +5,41 @@ Do you like to give to charities in America or abroad?
         Would you rather give legal or material assistance?
           * Legal
             And Justice For All (http://andjusticeforall.org/)
+            And Justice For All provides legal assistance to the disadvantaged, making sure counsel and assistance are available to those who need it most.
+            http://andjusticeforall.org/wp-content/uploads/2012/10/libertylogo.png
           * Material
             Midwest Food Bank (http://www.midwestfoodbank.org/home)
+            Midwest Food Bank feeds thousands of the neediest people in the Midwest by operating a network of food banks.
+            http://www.midwestfoodbank.org/assets/img/logo.png
       * Future
         Do you want to fight for legal changes or revitalize our economy?
           * Legal
             EFF (https://eff.org/)
+            The EFF fights for the digital and electronic civil rights of people across the world, providing legal services and influencing internet policy.
+            https://www.eff.org/files/2014/01/24/eff-logo-plain-300.jpg
           * Economic
             Venture for America (http://ventureforamerica.org/)
+            Venture for America builds and revitalizes our economy by placing empowering bright and driven students to make an impact through entrepreneurship.
+            http://havaspr.com/us/wp-content/uploads/2012/12/Venture-for-America-618-328.jpg
   * Abroad
     Would you rather provide material assistance or focus on building the future?
       * Material
         Would you rather provide sustenance or medical care?
           * Sustenance
             Water.org (http://water.org/)
+            Water.org provides lifesaving water to the neediest people in the world, building clean wells that change communities forever.
+            http://water.org/static/image/logo.png?v=1.1
           * Medical Care
             Doctors Without Borders (http://www.doctorswithoutborders.org/)
+            Doctors Without Borders sends doctors across the world to provide life-saving medical care for some of the neediest people in the world.
+            http://cdn.doctorswithoutborders.org/sites/all/themes/unified_template/ut_zen/logo.png
       * Future
         Would you rather provide economic help or fight for human rights?
           * Economic
             Heifer International (http://www.heifer.org/)
+            Heifer International empowers the world's poorest to change their lifestyle by providing them with a path to economic success through livestock.
+            http://www.heifer.org/resources/images/logo.png
           * Human rights
             Amnesty International (http://www.amnestyusa.org/)
+            Amnesty International fights for peace and human rights across the world, championing campaigns to protect the defenseless.
+            http://thenewsdoctors.com/wp-content/uploads/2014/09/amnesty-international11.jpg
