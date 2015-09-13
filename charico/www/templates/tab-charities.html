@@ -6,15 +6,17 @@
     </ion-nav-buttons>
   <ion-content>
     <ion-list show-reorder="data.reorderable">
-      <ion-item class="item-remove-animate item-avatar item-icon-right item-button-right" ng-repeat="charity in charities" href="#/tab/charities/{{charity.id}}" type="item-text-wrap">
+      <ion-item class="item-remove-animate item-avatar item-icon-right item-button-right" ng-repeat="charity in charities" type="item-text-wrap">
         <img ng-src="{{charity.face}}">
-        <h2>{{charity.name}}</h2>
+        <a href="#/tab/charities/{{charity.id}}" style="text-decoration: none; color: black"><h2>{{charity.name}}</h2></a>
         <p style="width: 75%">{{charity.description}}</p>
-        <button class="button" ng-click="makeDonation(charity, 10)" ng-hide="data.reorderable" style="position: absolute; top: 30%">Donate</button>
+        <button class="button" ng-click="donationDialog(charity)" ng-hide="data.reorderable" style="position: absolute; top: 30%">Donate</button>
         <ion-reorder-button class="ion-navicon"
             on-reorder="moveItem(charity, $fromIndex, $toIndex)">
         </ion-reorder-button>
       </ion-item>
     </ion-list>
   </ion-content>
+
+
 </ion-view>

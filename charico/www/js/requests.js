@@ -46,6 +46,7 @@ function Deposits($scope, $http, name, $rootScope) {
               console.log(donations);
               $rootScope.monthPercentage = Math.floor(donations / (user.get('percentage') / 100 * sum) * 100);
               $rootScope.deposits = sum;
+              $rootScope.donations = donations;
           });
           }
 

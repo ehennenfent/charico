@@ -1,6 +1,9 @@
 <ion-view view-title="Account">
   <ion-content>
     <div class="card">
+        <div class="item item-divider">
+            Banking Info
+        </div>
         <label class="item item-input">
           <span class="input-label">Full Name</span>
           <input type="text" ng-model="data.fullName"></input>
@@ -9,6 +12,14 @@
           <span class="input-label">Account Number</span>
           <input type="text" ng-model="data.apiKey"></input>
         </label>
+        <button class="button button-block button-light" ng-click="bankDialog()">
+          Update
+        </button>
+    </div>
+    <div class="card">
+        <div class="item item-divider">
+            Donation Percentage
+        </div>
         <div class="list">
           <div class="item range range-positive">
             <i class="icon ion-minus"></i>
@@ -18,8 +29,23 @@
         </div>
         <div style="font-size: 45px; font-weight: light; color: #9d9; text-align: center; height: 1.4em;">{{data.percentage}}%</div>
     </div>
+    <div class="card">
+        <div class="item item-divider">
+            Favorite Charity
+        </div>
+        <ion-list >
+          <ion-item class="item-remove-animate item-avatar item-icon-right item-button-right" href="#/tab/charities/{{charity.id}}" type="item-text-wrap">
+            <img ng-src="{{charity.face}}">
+            <h2>{{charity.name}}</h2>
+            <p>{{charity.description}}</p>
+          </ion-item>
+          <button class="button button-block button-light" ng-click="charityDialog()">
+            Change
+          </button>
+        </ion-list>
+    </div>
     <button ng-click="storeParseUser()" class="button button-block" style="background-color: #ED7177; border-color: #ED7177">
-Update
+        Save
     </button>
   </ion-content>
 </ion-view>
