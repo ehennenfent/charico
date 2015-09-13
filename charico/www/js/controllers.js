@@ -89,7 +89,11 @@ angular.module('starter.controllers', [])
 
     $scope.bankDialog = function() {
       var alertPopup = $ionicPopup.alert({
-
+          title: 'Who are you?',
+          template: '<p>{{question}}</p> <p><button class="button button-block button-light" ng-click="num1Clicked()">{{num1}}</button></p> <p><button class="button button-block button-light" ng-click="num2clicked()">{{num2}}</button></p>',
+          buttons: [{ text: 'Save',
+          type: 'button-positive'}],
+          scope: $scope
       });
       alertPopup.then(function(res) {
         console.log('Thank you for not eating my delicious ice cream cone');
@@ -103,7 +107,7 @@ angular.module('starter.controllers', [])
 
       var alertPopup = $ionicPopup.alert({
         title: 'Pick a Charity',
-        template: '<p>{{question}}</p> <p><button class="button button-block button-light" ng-click="num1Clicked()">{{num1}}</button></p> <p><button class="button button-block button-light" ng-click="num2clicked()">{{num2}}</button></p>',
+        template: '<p>{{question}}</p> <p ng-hide="disableButtons"><button class="button button-block button-light" ng-click="num1Clicked()">{{num1}}</button></p> <p ng-hide="disableButtons"><button class="button button-block button-light" ng-click="num2Clicked()">{{num2}}</button></p>',
         buttons: [{ text: 'Close',
         type: 'button-positive'}],
         scope: $scope
@@ -116,8 +120,7 @@ angular.module('starter.controllers', [])
     $scope.num1Clicked = function(){
         answerCounter += 1;
         if(answerCounter == 4){
-            charity = Charities.all()[0];
-            $scope.question = 'looks like your ideal charity is ' + charity.name;
+            $scope.setCharity();
             return;
         }
         questionPointer += 1;
@@ -131,23 +134,35 @@ angular.module('starter.controllers', [])
     $scope.num2Clicked = function(){
         answerCounter += 1;
         if(answerCounter == 4){
-            charity = Charities.all()[0];
-            $scope.question = 'looks like your ideal charity is ' + charity.name;
+            answerPointer++;
+            $scope.setCharity();
             return;
         }
-        if(questionPointer === 0){questionPointer = 4;}
-        else if(questionPointer == 1){questionPointer = 3;}
-        else if(questionPointer == 4){questionPointer = 7;}
-        else {questionPointer += 1;}
-        if(answerPointer == 1){$scope.num2 = $scope.answers[4];}
-        if(answerPointer == 1){answerPointer = 7}
-        else if(answerPointer == 2){$scope.num2 = $scope.answers[3];}
-        else if(answerPointer == 5){$scope.num2 = $scope.answers[6];}
-        else if(answerPointer == 9){$scope.num2 = $scope.answers[10];}
-        else if(answerPointer == 12){$scope.num2 = $scope.answers[13];}
-        else if(answerPointer == 8){$scope.num2 = $scope.answers[11];}
+        questionPointer += Math.ceil(offset / 2.0);
+        offset = Math.floor(offset - offset/2.0);
+        answerPointer += 2*(offset + 1);
+        $scope.num2 = $scope.answers[answerPointer + offset];
         $scope.question = $scope.questions[questionPointer];
         $scope.num1 = $scope.answers[answerPointer];
+    };
+
+    $scope.setCharity = function(){
+        var charities = Charities.all();
+        var charity = charities[0];
+        if(answerPointer == 2){charity = charities[0];}
+        if(answerPointer == 3){charity = charities[1];}
+        if(answerPointer == 5){charity = charities[2];}
+        if(answerPointer == 6){charity = charities[3];}
+        if(answerPointer == 9){charity = charities[4];}
+        if(answerPointer == 10){charity = charities[5];}
+        if(answerPointer == 12){charity = charities[6];}
+        if(answerPointer == 13){charity = charities[7];}
+        Charities.moveItem(charity,charities.indexOf(charity),0);
+        $scope.question = 'Looks like your ideal charity is: ' + charity.name;
+        $scope.disableButtons = true;
+        $scope.$on('$ionicView.enter', function(e) {
+            $scope.charity = Charities.all()[0];
+        });
     };
 
     var firstTime = (window.localStorage.getItem("firstTime") != 'false');
